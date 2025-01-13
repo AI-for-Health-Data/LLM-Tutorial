@@ -65,7 +65,6 @@ def get_layer_embeddings(model, texts, layer_num=23):
     tokenizer = model.tokenizer
     device = model.device  # Get the device model is currently on
 
-    cls_embeddings = []
 	c_emb=[]
     for text in texts:
         
@@ -79,7 +78,7 @@ def get_layer_embeddings(model, texts, layer_num=23):
         last_embeddings = layer_embeddings[:,0,:].detach().cpu().numpy()   
         c_emb.append(last_embeddings.squeeze())
             
-    return mean_embeddings
+    return c_emb
     
 
 # Assuming 'text' is the column with text data
